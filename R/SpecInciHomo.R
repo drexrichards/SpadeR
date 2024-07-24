@@ -105,6 +105,10 @@ function(data, k, conf){
   j <- rep(sort(unique(x)),length(unique(x)))       # all combination
   
   var_mle <- sum(mapply(function(i, j)diff(i)*diff(j)*COV.q(i, j), i, j))
+                        if(is.na(var_mle)){
+                          var_mle <- NA
+    cat("Warning: In this case, it can't estimate the variance of Homogeneous estimation", "\n\n")
+                          }
   if (var_mle > 0){
     var_mle <- var_mle
   } else {
