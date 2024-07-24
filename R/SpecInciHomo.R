@@ -107,9 +107,8 @@ function(data, k, conf){
   var_mle <- sum(mapply(function(i, j)diff(i)*diff(j)*COV.q(i, j), i, j))
                         if(is.na(var_mle)){
                           var_mle <- NA
-    cat("Warning: In this case, it can't estimate the variance of Homogeneous estimation", "\n\n")
-                          }
-  if (var_mle > 0){
+    cat("Warning: In this case, it was na", "\n\n")
+                          } else  if (var_mle > 0){
     var_mle <- var_mle
   } else {
     var_mle <- NA
